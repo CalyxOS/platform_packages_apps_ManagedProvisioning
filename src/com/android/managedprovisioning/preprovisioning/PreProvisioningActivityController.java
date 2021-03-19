@@ -53,6 +53,7 @@ import static com.android.managedprovisioning.model.ProvisioningParams.FLOW_TYPE
 
 import static java.util.Objects.requireNonNull;
 
+import android.Manifest;
 import android.accounts.Account;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
@@ -722,6 +723,15 @@ public class PreProvisioningActivityController {
         } else if (ACTION_PROVISION_MANAGED_DEVICE_FROM_TRUSTED_SOURCE.equals(intent.getAction())
                 || ACTION_PROVISION_FINANCED_DEVICE.equals(intent.getAction())) {
             return verifyActivityAlias(intent, "PreProvisioningActivityViaTrustedApp");
+        } else if (mParams.isUnmanagedProvisioning) {
+            List<PackageInfo> packages = mPackageManager.getPackagesHoldingPermissions(
+                    new String[]{Manifest.permission.CREATE_PROFILES_WITHOUT_OWNER}, 0);
+            for (PackageInfo packageInfo : packages) {
+                if (packageInfo.packageName.equals(callingPackage)) {
+                    return true;
+                }
+            }
+            return false;
         } else {
             return verifyCaller(callingPackage);
         }

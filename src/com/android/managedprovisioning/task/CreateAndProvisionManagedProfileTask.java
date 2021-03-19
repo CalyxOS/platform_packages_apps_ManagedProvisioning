@@ -127,7 +127,7 @@ public class CreateAndProvisionManagedProfileTask extends AbstractProvisioningTa
         ComponentName adminComponent =
                 mProvisioningParams.inferDeviceAdminComponentName(mUtils, mContext, userId);
         return new ManagedProfileProvisioningParams.Builder(
-                adminComponent, adminComponent.getPackageName())
+                adminComponent, adminComponent != null ? adminComponent.getPackageName() : null)
                 .setProfileName(mContext.getString(R.string.default_managed_profile_name))
                 .setAccountToMigrate(mProvisioningParams.accountToMigrate)
                 .setLeaveAllSystemAppsEnabled(
@@ -135,6 +135,7 @@ public class CreateAndProvisionManagedProfileTask extends AbstractProvisioningTa
                 .setOrganizationOwnedProvisioning(
                         mProvisioningParams.isOrganizationOwnedProvisioning)
                 .setKeepAccountMigrated(mProvisioningParams.keepAccountMigrated)
+                .setIsUnmanagedProvisioning(mProvisioningParams.isUnmanagedProvisioning)
                 .build();
     }
 
