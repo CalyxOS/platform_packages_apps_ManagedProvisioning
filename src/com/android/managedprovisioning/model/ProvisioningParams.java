@@ -329,17 +329,11 @@ public final class ProvisioningParams extends PersistableBundlable {
         isOrganizationOwnedProvisioning = builder.mIsOrganizationOwnedProvisioning;
         isTransitioningFromRegularToChild = builder.mIsTransitioningFromRegularToChild;
         provisioningMode = builder.mProvisioningMode;
-
-        validateFields();
     }
 
     private ProvisioningParams(Parcel in) {
         this(createBuilderFromPersistableBundle(
                 PersistableBundlable.getPersistableBundleFromParcel(in)));
-    }
-
-    private void validateFields() {
-        checkArgument(deviceAdminPackageName != null || deviceAdminComponentName != null);
     }
 
     @Override
