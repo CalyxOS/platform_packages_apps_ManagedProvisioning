@@ -223,7 +223,9 @@ public final class FinalizationController {
                     .finalizeProvisioningInPrimaryProfile(mActivity, null);
         }
 
-        mUserProvisioningStateHelper.markUserProvisioningStateFinalized(params);
+        if (params.inferDeviceAdminPackageName() != null) {
+            mUserProvisioningStateHelper.markUserProvisioningStateFinalized(params);
+        }
 
         mDeferredMetricsReader.scheduleDumpMetrics(mActivity);
         clearParamsFile();

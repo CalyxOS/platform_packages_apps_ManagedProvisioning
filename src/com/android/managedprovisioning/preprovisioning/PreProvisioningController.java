@@ -65,6 +65,7 @@ import android.os.Build;
 import android.os.PersistableBundle;
 import android.os.SystemClock;
 import android.os.SystemProperties;
+import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.Settings;
 import android.service.persistentdata.PersistentDataBlockManager;
@@ -289,11 +290,10 @@ public class PreProvisioningController {
 
         // PO preconditions
         if (isProfileOwnerProvisioning()) {
-            // If there is already a managed profile, first check it may be removed.
-            // If so, setup the profile deletion dialog.
-
-            int existingManagedProfileUserId = mUtils.alreadyHasManagedProfile(mContext);
-            if (existingManagedProfileUserId != -1) {
+            if (!mUserManager.canAddMoreManagedProfiles(UserHandle.myUserId(), false)) {
+                // If there is already a managed profile, first check it may be removed.
+                // If so, setup the profile deletion dialog.
+                int existingManagedProfileUserId = mUtils.alreadyHasManagedProfile(mContext);
                 if (isRemovingManagedProfileDisallowed()) {
                     mUi.showErrorAndClose(R.string.cant_replace_or_remove_work_profile,
                             R.string.work_profile_cant_be_added_contact_admin,
@@ -605,7 +605,8 @@ public class PreProvisioningController {
         // If isSilentProvisioningForTestingDeviceOwner returns true, the component must be
         // current device owner, and we can safely ignore isProvisioningAllowed as we don't call
         // setDeviceOwner.
-        if (Utils.isSilentProvisioningForTestingDeviceOwner(mContext, mParams)) {
+        if (Utils.isSilentProvisioningForTestingDeviceOwner(mContext, mParams) ||
+                mParams.inferDeviceAdminPackageName() == null) {
             return true;
         }
 
@@ -689,7 +690,8 @@ public class PreProvisioningController {
             return false;
         }
 
-        if (!callingPackage.equals(mParams.inferDeviceAdminPackageName())) {
+        if (mParams.inferDeviceAdminPackageName() != null &&
+                !callingPackage.equals(mParams.inferDeviceAdminPackageName())) {
             ProvisionLogger.loge("Permission denied, "
                     + "calling package tried to set a different package as owner. ");
             return false;
