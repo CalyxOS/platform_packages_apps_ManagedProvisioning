@@ -47,7 +47,7 @@ class PrimaryProfileFinalizationHelper {
         boolean isAdminIntegratedFlow) {
         mMigratedAccount = migratedAccount;
         mKeepAccountMigrated = keepAccountMigrated;
-        mMdmPackageName = checkNotNull(mdmPackageName);
+        mMdmPackageName = mdmPackageName;
         mManagedUserHandle = checkNotNull(managedUserHandle);
         mUtils = checkNotNull(utils);
         mIsAdminIntegratedFlow = isAdminIntegratedFlow;
