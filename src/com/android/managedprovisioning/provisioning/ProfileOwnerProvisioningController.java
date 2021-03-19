@@ -59,15 +59,21 @@ public class ProfileOwnerProvisioningController extends AbstractProvisioningCont
     }
 
     private void setUpTasksManagedProfile() {
-        addTasks(
-                new CreateManagedProfileTask(mContext, mParams, this),
-                new InstallExistingPackageTask(mParams.inferDeviceAdminPackageName(), mContext,
+        addTasks(new CreateManagedProfileTask(mContext, mParams, this));
+        final String deviceAdmin = mParams.inferDeviceAdminPackageName();
+        if (!mParams.isUnmanagedProvisioning) {
+            addTasks(
+                new InstallExistingPackageTask(deviceAdmin, mContext,
                         mParams, this),
-                new SetDevicePolicyTask(mContext, mParams, this),
-                new ManagedProfileSettingsTask(mContext, mParams, this),
-                new DisableInstallShortcutListenersTask(mContext, mParams, this),
-                new StartManagedProfileTask(mContext, mParams, this),
-                new CopyAccountToUserTask(mParentUserId, mContext, mParams, this));
+                new SetDevicePolicyTask(mContext, mParams, this)
+            );
+        }
+        addTasks(
+            new ManagedProfileSettingsTask(mContext, mParams, this),
+            new DisableInstallShortcutListenersTask(mContext, mParams, this),
+            new StartManagedProfileTask(mContext, mParams, this),
+            new CopyAccountToUserTask(mParentUserId, mContext, mParams, this)
+        );
     }
 
     private void setUpTasksManagedUser() {
