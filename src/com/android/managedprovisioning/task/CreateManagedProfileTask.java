@@ -94,7 +94,7 @@ public class CreateManagedProfileTask extends AbstractProvisioningTask {
         startTaskTimer();
         final Set<String> nonRequiredApps = mNonRequiredAppsLogic.getSystemAppsToRemove(userId);
         UserInfo userInfo = mUserManager.createProfileForUserEvenWhenDisallowed(
-                mContext.getString(R.string.default_managed_profile_name),
+                mProvisioningParams.userName,
                 UserManager.USER_TYPE_PROFILE_MANAGED, UserInfo.FLAG_DISABLED,
                 userId, nonRequiredApps.toArray(new String[nonRequiredApps.size()]));
         if (userInfo == null) {

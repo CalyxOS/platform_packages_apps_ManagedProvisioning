@@ -97,6 +97,7 @@ public final class ProvisioningParams extends PersistableBundlable {
     public static final boolean DEFAULT_EXTRA_PROVISIONING_USE_MOBILE_DATA = false;
     // Intent extra used internally for passing data between activities and service.
     public static final String EXTRA_PROVISIONING_PARAMS = "provisioningParams";
+    public static final String EXTRA_PROVISIONING_USER_NAME = "provisioningUserName";
 
     // Possible provisioning modes for organization owned provisioning.
     public static final int PROVISIONING_MODE_UNDECIDED = 0;
@@ -188,6 +189,7 @@ public final class ProvisioningParams extends PersistableBundlable {
     public final ComponentName deviceAdminComponentName;
 
     public final String deviceAdminLabel;
+    public final String userName;
     public final String organizationName;
     public final String supportUrl;
     public final String deviceAdminIconFilePath;
@@ -304,6 +306,7 @@ public final class ProvisioningParams extends PersistableBundlable {
         deviceAdminComponentName = builder.mDeviceAdminComponentName;
         deviceAdminPackageName = builder.mDeviceAdminPackageName;
         deviceAdminLabel = builder.mDeviceAdminLabel;
+        userName = builder.mUserName;
         organizationName = builder.mOrganizationName;
         supportUrl = builder.mSupportUrl;
         deviceAdminIconFilePath = builder.mDeviceAdminIconFilePath;
@@ -329,17 +332,11 @@ public final class ProvisioningParams extends PersistableBundlable {
         isOrganizationOwnedProvisioning = builder.mIsOrganizationOwnedProvisioning;
         isTransitioningFromRegularToChild = builder.mIsTransitioningFromRegularToChild;
         provisioningMode = builder.mProvisioningMode;
-
-        validateFields();
     }
 
     private ProvisioningParams(Parcel in) {
         this(createBuilderFromPersistableBundle(
                 PersistableBundlable.getPersistableBundleFromParcel(in)));
-    }
-
-    private void validateFields() {
-        checkArgument(deviceAdminPackageName != null || deviceAdminComponentName != null);
     }
 
     @Override
@@ -356,6 +353,7 @@ public final class ProvisioningParams extends PersistableBundlable {
         bundle.putString(EXTRA_PROVISIONING_DEVICE_ADMIN_COMPONENT_NAME,
                 StoreUtils.componentNameToString(deviceAdminComponentName));
         bundle.putString(EXTRA_PROVISIONING_DEVICE_ADMIN_PACKAGE_LABEL, deviceAdminLabel);
+        bundle.putString(EXTRA_PROVISIONING_USER_NAME, userName);
         bundle.putString(EXTRA_PROVISIONING_ORGANIZATION_NAME, organizationName);
         bundle.putString(EXTRA_PROVISIONING_SUPPORT_URL, supportUrl);
         bundle.putString(EXTRA_PROVISIONING_DEVICE_ADMIN_PACKAGE_ICON_URI, deviceAdminIconFilePath);
@@ -405,6 +403,7 @@ public final class ProvisioningParams extends PersistableBundlable {
                 EXTRA_PROVISIONING_DEVICE_ADMIN_COMPONENT_NAME, StoreUtils::stringToComponentName));
         builder.setDeviceAdminLabel(bundle.getString(
                 EXTRA_PROVISIONING_DEVICE_ADMIN_PACKAGE_LABEL));
+        builder.setUserName(bundle.getString(EXTRA_PROVISIONING_USER_NAME));
         builder.setOrganizationName(bundle.getString(EXTRA_PROVISIONING_ORGANIZATION_NAME));
         builder.setSupportUrl(bundle.getString(EXTRA_PROVISIONING_SUPPORT_URL));
         builder.setDeviceAdminIconFilePath(bundle.getString(
@@ -532,6 +531,7 @@ public final class ProvisioningParams extends PersistableBundlable {
         private String mDeviceAdminPackageName;
         private ComponentName mDeviceAdminComponentName;
         private String mDeviceAdminLabel;
+        private String mUserName;
         private String mOrganizationName;
         private String mSupportUrl;
         private String mDeviceAdminIconFilePath;
@@ -593,6 +593,11 @@ public final class ProvisioningParams extends PersistableBundlable {
 
         public Builder setDeviceAdminLabel(String deviceAdminLabel) {
             mDeviceAdminLabel = deviceAdminLabel;
+            return this;
+        }
+
+        public Builder setUserName(String userName) {
+            mUserName = userName;
             return this;
         }
 

@@ -217,8 +217,7 @@ public class Utils {
             dpcPackageName = dpcComponentName.getPackageName();
         }
         if (dpcPackageName == null) {
-            throw new IllegalProvisioningArgumentException("Neither the package name nor the"
-                    + " component name of the admin are supplied");
+            return null;
         }
         PackageInfo pi;
         try {

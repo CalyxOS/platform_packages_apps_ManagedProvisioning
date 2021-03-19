@@ -576,6 +576,8 @@ public class ExtrasProvisioningDataParser implements ProvisioningDataParser {
                                 ProvisioningParams
                                         .DEFAULT_EXTRA_PROVISIONING_KEEP_ACCOUNT_MIGRATED);
 
+            String userName = getStringExtraFromLongName(
+                    intent, ProvisioningParams.EXTRA_PROVISIONING_USER_NAME);
             // Parse main color and organization's logo. This is not supported in managed device
             // from trusted source provisioning because, currently, there is no way to send
             // organization logo to the device at this stage.
@@ -635,6 +637,7 @@ public class ExtrasProvisioningDataParser implements ProvisioningDataParser {
                     .setAccountToMigrate(getParcelableExtraFromLongName(
                             intent, EXTRA_PROVISIONING_ACCOUNT_TO_MIGRATE))
                     .setDeviceAdminLabel(deviceAdminLabel)
+                    .setUserName(userName)
                     .setOrganizationName(organizationName)
                     .setSupportUrl(supportUrl)
                     .setDeviceAdminIconFilePath(deviceAdminIconFilePath)
