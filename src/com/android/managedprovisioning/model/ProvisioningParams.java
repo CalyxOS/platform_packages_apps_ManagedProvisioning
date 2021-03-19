@@ -330,7 +330,7 @@ public final class ProvisioningParams extends PersistableBundlable {
         isTransitioningFromRegularToChild = builder.mIsTransitioningFromRegularToChild;
         provisioningMode = builder.mProvisioningMode;
 
-        validateFields();
+//        validateFields();
     }
 
     private ProvisioningParams(Parcel in) {
