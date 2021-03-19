@@ -277,8 +277,10 @@ public class ProvisioningActivity extends AbstractProvisioningActivity
     }
 
     private void markDeviceManagementEstablishedAndGoToNextStep() {
-        new PreFinalizationController(this, mUserProvisioningStateHelper)
-                .deviceManagementEstablished(mParams);
+        if (!mParams.isUnmanagedProvisioning) {
+            new PreFinalizationController(this, mUserProvisioningStateHelper)
+                    .deviceManagementEstablished(mParams);
+        }
 
         if (mUtils.isAdminIntegratedFlow(mParams)) {
             if (mStartDpcInsideSuwServiceConnection == null) {

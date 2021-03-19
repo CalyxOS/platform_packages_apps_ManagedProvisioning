@@ -518,6 +518,8 @@ public class ExtrasProvisioningDataParser implements ProvisioningDataParser {
             String provisioningAction = mUtils.mapIntentToDpmAction(intent);
             final boolean isManagedProfileAction =
                     ACTION_PROVISION_MANAGED_PROFILE.equals(provisioningAction);
+            final boolean isUnmanagedProvisioning = getBooleanExtraFromLongName(
+                    intent, ProvisioningParams.TAG_IS_UNMANAGED_PROVISIONING, false);
 
             // Parse device admin package name and component name.
             ComponentName deviceAdminComponentName = getParcelableExtraFromLongName(
@@ -532,11 +534,13 @@ public class ExtrasProvisioningDataParser implements ProvisioningDataParser {
                         intent, EXTRA_PROVISIONING_DEVICE_ADMIN_PACKAGE_NAME);
                 // For profile owner, the device admin package should be installed. Verify the
                 // device admin package.
-                deviceAdminComponentName = mUtils.findDeviceAdmin(
-                        deviceAdminPackageName,
-                        deviceAdminComponentName,
-                        context,
-                        UserHandle.myUserId());
+                if (!isUnmanagedProvisioning) {
+                    deviceAdminComponentName = mUtils.findDeviceAdmin(
+                            deviceAdminPackageName,
+                            deviceAdminComponentName,
+                            context,
+                            UserHandle.myUserId());
+                }
                 // Since the device admin package must be installed at this point and its component
                 // name has been obtained, it should be safe to set the deprecated package name
                 // value to null.
@@ -640,7 +644,8 @@ public class ExtrasProvisioningDataParser implements ProvisioningDataParser {
                     .setDeviceAdminIconFilePath(deviceAdminIconFilePath)
                     .setIsQrProvisioning(mUtils.isQrProvisioning(intent))
                     .setIsOrganizationOwnedProvisioning(
-                            mUtils.isOrganizationOwnedProvisioning(intent));
+                            mUtils.isOrganizationOwnedProvisioning(intent))
+                    .setIsUnmanagedProvisioning(isUnmanagedProvisioning);
         } catch (ClassCastException e) {
             throw new IllegalProvisioningArgumentException("Extra has invalid type", e);
         } catch (IllegalArgumentException e) {
