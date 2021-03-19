@@ -119,6 +119,8 @@ public final class ProvisioningParams extends PersistableBundlable {
     @Retention(RetentionPolicy.SOURCE)
     public @interface ProvisioningMode {}
 
+    public static final String TAG_IS_UNMANAGED_PROVISIONING = "is-unmanaged-provisioning";
+
     private static final String TAG_PROVISIONING_ID = "provisioning-id";
     private static final String TAG_PROVISIONING_PARAMS = "provisioning-params";
     private static final String TAG_WIFI_INFO = "wifi-info";
@@ -256,6 +258,9 @@ public final class ProvisioningParams extends PersistableBundlable {
     /** True if the device is transitioning from regular to child user. */
     public final boolean isTransitioningFromRegularToChild;
 
+    /** True if provisioning an unmanaged profile */
+    public final boolean isUnmanagedProvisioning;
+
     /**
      * The provisioning mode for organization owned provisioning. This is only used for
      * admin integrated flow.
@@ -287,6 +292,8 @@ public final class ProvisioningParams extends PersistableBundlable {
             throws IllegalProvisioningArgumentException {
         if (deviceAdminComponentName != null) {
             return deviceAdminComponentName;
+        } else if (isUnmanagedProvisioning) {
+            return null;
         }
         return utils.findDeviceAdmin(
                 deviceAdminPackageName, deviceAdminComponentName, context, userId);
@@ -328,6 +335,7 @@ public final class ProvisioningParams extends PersistableBundlable {
 
         isOrganizationOwnedProvisioning = builder.mIsOrganizationOwnedProvisioning;
         isTransitioningFromRegularToChild = builder.mIsTransitioningFromRegularToChild;
+        isUnmanagedProvisioning = builder.mIsUnmanagedProvisioning;
         provisioningMode = builder.mProvisioningMode;
 
         validateFields();
@@ -339,7 +347,8 @@ public final class ProvisioningParams extends PersistableBundlable {
     }
 
     private void validateFields() {
-        checkArgument(deviceAdminPackageName != null || deviceAdminComponentName != null);
+        checkArgument(deviceAdminPackageName != null || deviceAdminComponentName != null ||
+                isUnmanagedProvisioning);
     }
 
     @Override
@@ -381,6 +390,7 @@ public final class ProvisioningParams extends PersistableBundlable {
         bundle.putBoolean(TAG_IS_ORGANIZATION_OWNED_PROVISIONING, isOrganizationOwnedProvisioning);
         bundle.putBoolean(TAG_IS_TRANSITIONING_FROM_REGULAR_TO_CHILD,
                  isTransitioningFromRegularToChild);
+        bundle.putBoolean(TAG_IS_UNMANAGED_PROVISIONING, isUnmanagedProvisioning);
         bundle.putInt(TAG_PROVISIONING_MODE, provisioningMode);
         return bundle;
     }
@@ -435,6 +445,8 @@ public final class ProvisioningParams extends PersistableBundlable {
                 TAG_IS_ORGANIZATION_OWNED_PROVISIONING));
         builder.setIsTransitioningFromRegularToChild(bundle.getBoolean(
                 TAG_IS_TRANSITIONING_FROM_REGULAR_TO_CHILD));
+        builder.setIsUnmanagedProvisioning(bundle.getBoolean(
+                TAG_IS_UNMANAGED_PROVISIONING));
         builder.setProvisioningMode(bundle.getInt(TAG_PROVISIONING_MODE));
         return builder;
     }
@@ -553,6 +565,7 @@ public final class ProvisioningParams extends PersistableBundlable {
         private boolean mUseMobileData = DEFAULT_EXTRA_PROVISIONING_USE_MOBILE_DATA;
         private boolean mIsOrganizationOwnedProvisioning = false;
         private boolean mIsTransitioningFromRegularToChild = false;
+        private boolean mIsUnmanagedProvisioning = false;
         private @ProvisioningMode int mProvisioningMode = PROVISIONING_MODE_UNDECIDED;
 
         public Builder setProvisioningId(long provisioningId) {
@@ -699,6 +712,11 @@ public final class ProvisioningParams extends PersistableBundlable {
         public Builder setIsTransitioningFromRegularToChild(
                 boolean isTransitioningFromRegularToChild) {
             mIsTransitioningFromRegularToChild = isTransitioningFromRegularToChild;
+            return this;
+        }
+
+        public Builder setIsUnmanagedProvisioning(boolean isUnmanagedProvisioning) {
+            mIsUnmanagedProvisioning = isUnmanagedProvisioning;
             return this;
         }
 
