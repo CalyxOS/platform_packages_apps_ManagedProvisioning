@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfcd62a9_e1da01cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-05-25T11:46:55Z",
+      "side": 1,
+      "message": "Are we sure there wouldn\u0027t be a way to bypass this / apps can\u0027t just created unmanaged profiles?\n\n\nAlthough if you think about it, what can apps do with the profile once provisioned. They don\u0027t own it / aren\u0027t the admin so wouldn\u0027t be given any extra special permissions - all it would do is just create a new profile. You\u0027d still need system level privileges to actually do anything with it.",
+      "revId": "a593b23fc2b89ee13e2a5be9052bb34957ccd8c7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc33d918_6026091d",
+        "filename": "src/com/android/managedprovisioning/preprovisioning/PreProvisioningController.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-05-25T11:46:55Z",
+      "side": 1,
+      "message": "Might be better to do it via permission instead.\n\nSomething like verifyPrivilegedCaller(), and then make sure it has a new privileged permission we add.",
+      "revId": "a593b23fc2b89ee13e2a5be9052bb34957ccd8c7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
