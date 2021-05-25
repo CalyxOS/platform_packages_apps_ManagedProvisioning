@@ -33,6 +33,24 @@
       "message": "Might be better to do it via permission instead.\n\nSomething like verifyPrivilegedCaller(), and then make sure it has a new privileged permission we add.",
       "revId": "a593b23fc2b89ee13e2a5be9052bb34957ccd8c7",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04548b7d_fa011d2d",
+        "filename": "src/com/android/managedprovisioning/preprovisioning/PreProvisioningController.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-05-25T15:03:17Z",
+      "side": 1,
+      "message": "If really wanted I can make it based on permission instead. Personally I think verifying the calling package is the Settings app should be sufficient.\nTo address the other concern though (being able to bypass this measure), I don\u0027t see how. The else if condition is checking that the parameter is set and only allowing to proceed if the calling package is Settings. Otherwise the parameter is not set and we proceed with AOSP flow which will cause crashes if an app is not setting itself as the profile owner etc",
+      "parentUuid": "dc33d918_6026091d",
+      "revId": "a593b23fc2b89ee13e2a5be9052bb34957ccd8c7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
