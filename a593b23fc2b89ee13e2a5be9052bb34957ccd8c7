@@ -51,6 +51,24 @@
       "parentUuid": "dc33d918_6026091d",
       "revId": "a593b23fc2b89ee13e2a5be9052bb34957ccd8c7",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b684e28_55107c1d",
+        "filename": "src/com/android/managedprovisioning/preprovisioning/PreProvisioningController.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-05-25T17:44:39Z",
+      "side": 1,
+      "message": "It should be sufficient yeah, but permission would allow us to use this from other app too (from datura for not vpn in the future)\n\nAlso covers any future package name changes (although unlikely).\n\nWe do something similar with microG signature spoofing, the permission is privileged but the framework still checks for a package name (although we don\u0027t need both here)",
+      "parentUuid": "04548b7d_fa011d2d",
+      "revId": "a593b23fc2b89ee13e2a5be9052bb34957ccd8c7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
