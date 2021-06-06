@@ -15,4 +15,5 @@
      limitations under the License.
 -->
 <resources>
+  <string name="calyx_work_profile_provisioning_step_3_header">Data in your work profile</string>
 </resources>

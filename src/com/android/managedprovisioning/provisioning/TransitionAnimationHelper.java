@@ -55,7 +55,7 @@ class TransitionAnimationHelper {
                 R.drawable.separate_work_and_personal_animation),
         new TransitionScreenWrapper(R.string.work_profile_provisioning_step_2_header,
                 R.drawable.pause_work_apps_animation),
-        new TransitionScreenWrapper(R.string.work_profile_provisioning_step_3_header,
+        new TransitionScreenWrapper(R.string.calyx_work_profile_provisioning_step_3_header,
                 R.drawable.not_private_animation)
     }, R.string.work_profile_provisioning_summary);
 
