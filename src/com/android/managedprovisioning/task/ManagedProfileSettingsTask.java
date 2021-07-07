@@ -88,8 +88,9 @@ public class ManagedProfileSettingsTask extends AbstractProvisioningTask {
 
         mCrossProfileIntentFiltersSetter.setFilters(UserHandle.myUserId(), userId);
 
-        // always mark managed profile setup as completed
-        mSettingsFacade.setUserSetupCompleted(mContext, userId);
+        if (!mProvisioningParams.isUnmanagedProvisioning) {
+            mSettingsFacade.setUserSetupCompleted(mContext, userId);
+        }
 
         success();
     }
