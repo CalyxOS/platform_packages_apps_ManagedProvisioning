@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90610f6b_93cff05f",
+        "filename": "src/com/android/managedprovisioning/common/Utils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2021-10-20T13:48:57Z",
+      "side": 1,
+      "message": "why?",
+      "revId": "c02df2a28d89da368ef05731f4b4cbfea9675e1c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
