@@ -16,6 +16,24 @@
       "message": "why?",
       "revId": "c02df2a28d89da368ef05731f4b4cbfea9675e1c",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66709bf4_cb2fca72",
+        "filename": "src/com/android/managedprovisioning/common/Utils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-10-20T13:55:23Z",
+      "side": 1,
+      "message": "The note below should be modified. We want to support multiple profiles. This function is used during provisioning and the last created profile is the one that needs provisioning",
+      "parentUuid": "90610f6b_93cff05f",
+      "revId": "c02df2a28d89da368ef05731f4b4cbfea9675e1c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
