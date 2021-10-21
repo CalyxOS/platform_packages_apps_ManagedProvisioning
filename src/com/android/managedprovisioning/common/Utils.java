@@ -82,6 +82,7 @@ import java.io.InputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
@@ -361,6 +362,8 @@ public class Utils {
         UserManager userManager = (UserManager) context.getSystemService(Context.USER_SERVICE);
         int currentUserId = userManager.getUserHandle();
         List<UserInfo> userProfiles = userManager.getProfiles(currentUserId);
+        Collections.sort(userProfiles, (UserInfo userInfo, UserInfo userInfo1) ->
+                Long.compare(userInfo1.creationTime, userInfo.creationTime));
         for (UserInfo profile : userProfiles) {
             if (profile.isManagedProfile()) {
                 return new UserHandle(profile.id);
