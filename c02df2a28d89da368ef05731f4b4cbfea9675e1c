@@ -34,6 +34,24 @@
       "parentUuid": "90610f6b_93cff05f",
       "revId": "c02df2a28d89da368ef05731f4b4cbfea9675e1c",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "087b568a_31450ec8",
+        "filename": "src/com/android/managedprovisioning/common/Utils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-11-15T16:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66709bf4_cb2fca72",
+      "revId": "c02df2a28d89da368ef05731f4b4cbfea9675e1c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
