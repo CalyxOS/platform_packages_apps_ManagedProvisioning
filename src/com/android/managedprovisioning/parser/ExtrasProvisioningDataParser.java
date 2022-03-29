@@ -494,8 +494,6 @@ public class ExtrasProvisioningDataParser implements ProvisioningDataParser {
             final long provisioningId = mSharedPreferences.incrementAndGetProvisioningId();
             String provisioningAction = mParserUtils.extractProvisioningAction(
                     intent, mSettingsFacade, mContext);
-            final boolean isUnmanagedProvisioning = getBooleanExtraFromLongName(
-                    intent, ProvisioningParams.TAG_IS_UNMANAGED_PROVISIONING, false);
 
             // Parse device admin package name and component name.
             ComponentName deviceAdminComponentName = getParcelableExtraFromLongName(
@@ -510,13 +508,11 @@ public class ExtrasProvisioningDataParser implements ProvisioningDataParser {
                         intent, EXTRA_PROVISIONING_DEVICE_ADMIN_PACKAGE_NAME);
                 // For profile owner, the device admin package should be installed. Verify the
                 // device admin package.
-                if (!isUnmanagedProvisioning) {
-                    deviceAdminComponentName = mUtils.findDeviceAdmin(
-                            deviceAdminPackageName,
-                            deviceAdminComponentName,
-                            context,
-                            UserHandle.myUserId());
-                }
+                deviceAdminComponentName = mUtils.findDeviceAdmin(
+                        deviceAdminPackageName,
+                        deviceAdminComponentName,
+                        context,
+                        UserHandle.myUserId());
                 // Since the device admin package must be installed at this point and its component
                 // name has been obtained, it should be safe to set the deprecated package name
                 // value to null.
@@ -593,8 +589,7 @@ public class ExtrasProvisioningDataParser implements ProvisioningDataParser {
                     .setSkipOwnershipDisclaimer(getSkipOwnershipDisclaimer(intent))
                     .setReturnBeforePolicyCompliance(getReturnBeforePolicyCompliance(intent))
                     .setDeviceOwnerPermissionGrantOptOut(
-                            adminOptedOutOfSensorsPermissionGrants)
-                    .setIsUnmanagedProvisioning(isUnmanagedProvisioning);
+                            adminOptedOutOfSensorsPermissionGrants);
         } catch (ClassCastException e) {
             throw new IllegalProvisioningArgumentException("Extra has invalid type", e);
         } catch (IllegalArgumentException e) {

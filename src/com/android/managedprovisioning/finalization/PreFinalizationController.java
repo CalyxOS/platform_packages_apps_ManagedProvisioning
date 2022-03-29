@@ -102,9 +102,7 @@ public final class PreFinalizationController {
             return;
         }
 
-        if (!params.isUnmanagedProvisioning) {
-            mUserProvisioningStateHelper.markUserProvisioningStateInitiallyDone(params);
-        }
+        mUserProvisioningStateHelper.markUserProvisioningStateInitiallyDone(params);
         if (ACTION_PROVISION_MANAGED_PROFILE.equals(params.provisioningAction)) {
             if (!params.returnBeforePolicyCompliance) {
                 // If a managed profile was provisioned and the provisioning initiator has requested
