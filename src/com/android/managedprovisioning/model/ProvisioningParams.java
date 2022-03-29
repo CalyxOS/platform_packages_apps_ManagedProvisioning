@@ -125,8 +125,6 @@ public final class ProvisioningParams extends PersistableBundlable {
     @Retention(RetentionPolicy.SOURCE)
     public @interface FlowType {}
 
-    public static final String TAG_IS_UNMANAGED_PROVISIONING = "is-unmanaged-provisioning";
-
     private static final String TAG_PROVISIONING_ID = "provisioning-id";
     private static final String TAG_PROVISIONING_PARAMS = "provisioning-params";
     private static final String TAG_WIFI_INFO = "wifi-info";
@@ -317,9 +315,6 @@ public final class ProvisioningParams extends PersistableBundlable {
      */
     public final boolean deviceOwnerPermissionGrantOptOut;
 
-    /** True if provisioning an unmanaged profile */
-    public final boolean isUnmanagedProvisioning;
-
     public static String inferStaticDeviceAdminPackageName(ComponentName deviceAdminComponentName,
             String deviceAdminPackageName) {
         if (deviceAdminComponentName != null) {
@@ -345,8 +340,6 @@ public final class ProvisioningParams extends PersistableBundlable {
             throws IllegalProvisioningArgumentException {
         if (deviceAdminComponentName != null) {
             return deviceAdminComponentName;
-        } else if (isUnmanagedProvisioning) {
-            return null;
         }
         return utils.findDeviceAdmin(
                 deviceAdminPackageName, deviceAdminComponentName, context, userId);
@@ -390,7 +383,6 @@ public final class ProvisioningParams extends PersistableBundlable {
         skipOwnershipDisclaimer = builder.mSkipOwnershipDisclaimer;
         returnBeforePolicyCompliance = builder.mReturnBeforePolicyCompliance;
         deviceOwnerPermissionGrantOptOut = builder.mDeviceOwnerPermissionGrantOptOut;
-        isUnmanagedProvisioning = builder.mIsUnmanagedProvisioning;
 
         validateFields();
     }
@@ -401,8 +393,7 @@ public final class ProvisioningParams extends PersistableBundlable {
     }
 
     private void validateFields() {
-        checkArgument(deviceAdminPackageName != null || deviceAdminComponentName != null ||
-                isUnmanagedProvisioning);
+        checkArgument(deviceAdminPackageName != null || deviceAdminComponentName != null);
     }
 
     @Override
@@ -450,7 +441,6 @@ public final class ProvisioningParams extends PersistableBundlable {
                 returnBeforePolicyCompliance);
         bundle.putBoolean(TAG_DEVICE_OWNER_PERMISSION_GRANT_OPT_OUT,
                 deviceOwnerPermissionGrantOptOut);
-        bundle.putBoolean(TAG_IS_UNMANAGED_PROVISIONING, isUnmanagedProvisioning);
         return bundle;
     }
 
@@ -507,8 +497,6 @@ public final class ProvisioningParams extends PersistableBundlable {
                 TAG_PROVISIONING_RETURN_BEFORE_POLICY_COMPLIANCE));
         builder.setDeviceOwnerPermissionGrantOptOut(
                 bundle.getBoolean(TAG_DEVICE_OWNER_PERMISSION_GRANT_OPT_OUT));
-        builder.setIsUnmanagedProvisioning(bundle.getBoolean(
-                TAG_IS_UNMANAGED_PROVISIONING));
         return builder;
     }
 
@@ -639,7 +627,6 @@ public final class ProvisioningParams extends PersistableBundlable {
                 DEFAULT_EXTRA_PROVISIONING_RETURN_BEFORE_POLICY_COMPLIANCE;
         private boolean mDeviceOwnerPermissionGrantOptOut =
                 DEFAULT_EXTRA_PROVISIONING_PERMISSION_GRANT_OPT_OUT;
-        private boolean mIsUnmanagedProvisioning = false;
 
         public Builder setProvisioningId(long provisioningId) {
             mProvisioningId = provisioningId;
@@ -805,11 +792,6 @@ public final class ProvisioningParams extends PersistableBundlable {
          */
         public Builder setDeviceOwnerPermissionGrantOptOut(boolean optout) {
             mDeviceOwnerPermissionGrantOptOut = optout;
-            return this;
-        }
-
-        public Builder setIsUnmanagedProvisioning(boolean isUnmanagedProvisioning) {
-            mIsUnmanagedProvisioning = isUnmanagedProvisioning;
             return this;
         }
 

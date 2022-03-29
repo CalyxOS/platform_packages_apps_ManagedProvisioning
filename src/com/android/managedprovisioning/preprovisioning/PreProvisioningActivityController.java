@@ -60,14 +60,12 @@ import static com.android.managedprovisioning.model.ProvisioningParams.FLOW_TYPE
 
 import static java.util.Objects.requireNonNull;
 
-import android.Manifest;
 import android.accounts.Account;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.app.Activity;
 import android.app.KeyguardManager;
 import android.app.admin.DevicePolicyManager;
-import android.app.admin.IDevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -78,8 +76,6 @@ import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.os.RemoteException;
-import android.os.ServiceManager;
 import android.os.SystemClock;
 import android.os.UserManager;
 import android.service.persistentdata.PersistentDataBlockManager;
@@ -759,25 +755,15 @@ public class PreProvisioningActivityController {
     /** @return False if condition preventing further provisioning */
     @VisibleForTesting protected boolean checkDevicePolicyPreconditions() {
         ProvisioningParams params = mViewModel.getParams();
-        try {
-            int provisioningPreCondition = params.isUnmanagedProvisioning ?
-                    IDevicePolicyManager.Stub.asInterface(
-                            ServiceManager.getService(Context.DEVICE_POLICY_SERVICE))
-                            .checkUnmanagedProvisioningPreCondition(params.provisioningAction,
-                                    params.inferDeviceAdminPackageName()) :
-                    mDevicePolicyManager.checkProvisioningPreCondition(
-                            params.provisioningAction,
-                            params.inferDeviceAdminPackageName());
-            // Check whether provisioning is allowed for the current action.
-            if (provisioningPreCondition != CODE_OK) {
-                mProvisioningAnalyticsTracker.logProvisioningNotAllowed(mContext,
-                        provisioningPreCondition);
-                showProvisioningErrorAndClose(
-                        params.provisioningAction, provisioningPreCondition);
-                return false;
-            }
-        } catch (RemoteException e) {
-            ProvisionLogger.loge(e);
+        int provisioningPreCondition = mDevicePolicyManager.checkProvisioningPreCondition(
+                params.provisioningAction,
+                params.inferDeviceAdminPackageName());
+        // Check whether provisioning is allowed for the current action.
+        if (provisioningPreCondition != CODE_OK) {
+            mProvisioningAnalyticsTracker.logProvisioningNotAllowed(mContext,
+                    provisioningPreCondition);
+            showProvisioningErrorAndClose(
+                    params.provisioningAction, provisioningPreCondition);
             return false;
         }
         return true;
@@ -818,15 +804,6 @@ public class PreProvisioningActivityController {
         } else if (ACTION_PROVISION_MANAGED_DEVICE_FROM_TRUSTED_SOURCE.equals(intent.getAction())
                 || ACTION_PROVISION_FINANCED_DEVICE.equals(intent.getAction())) {
             return verifyActivityAlias(intent, "PreProvisioningActivityViaTrustedApp");
-        } else if (mViewModel.getParams().isUnmanagedProvisioning) {
-            List<PackageInfo> packages = mPackageManager.getPackagesHoldingPermissions(
-                    new String[]{Manifest.permission.CREATE_PROFILES_WITHOUT_OWNER}, 0);
-            for (PackageInfo packageInfo : packages) {
-                if (packageInfo.packageName.equals(callingPackage)) {
-                    return true;
-                }
-            }
-            return false;
         } else {
             return verifyCaller(callingPackage);
         }

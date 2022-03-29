@@ -126,12 +126,8 @@ public class CreateAndProvisionManagedProfileTask extends AbstractProvisioningTa
             throws IllegalProvisioningArgumentException {
         ComponentName adminComponent =
                 mProvisioningParams.inferDeviceAdminComponentName(mUtils, mContext, userId);
-        ManagedProfileProvisioningParams.Builder managedProfileProvisioningParamsBuilder =
-                mProvisioningParams.isUnmanagedProvisioning ?
-                        new ManagedProfileProvisioningParams.Builder() :
-                        new ManagedProfileProvisioningParams.Builder(
-                                adminComponent, adminComponent.getPackageName());
-        return managedProfileProvisioningParamsBuilder
+        return new ManagedProfileProvisioningParams.Builder(
+                adminComponent, adminComponent.getPackageName())
                 .setProfileName(mContext.getString(R.string.default_managed_profile_name))
                 .setAccountToMigrate(mProvisioningParams.accountToMigrate)
                 .setLeaveAllSystemAppsEnabled(
@@ -139,7 +135,6 @@ public class CreateAndProvisionManagedProfileTask extends AbstractProvisioningTa
                 .setOrganizationOwnedProvisioning(
                         mProvisioningParams.isOrganizationOwnedProvisioning)
                 .setKeepAccountMigrated(mProvisioningParams.keepAccountMigrated)
-                .setIsUnmanagedProvisioning(mProvisioningParams.isUnmanagedProvisioning)
                 .build();
     }
 
