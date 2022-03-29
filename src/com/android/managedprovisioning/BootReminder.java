@@ -15,9 +15,19 @@
  */
 package com.android.managedprovisioning;
 
+import android.app.AppGlobals;
+import android.app.admin.DevicePolicyManager;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Process;
+import android.os.RemoteException;
+import android.os.UserHandle;
+import android.os.UserManager;
+import android.provider.Settings;
+import android.util.Slog;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.managedprovisioning.common.CrossProfileAppsPregrantControllerProvider;
@@ -32,6 +42,10 @@ import com.android.managedprovisioning.manageduser.ManagedUserRemovalUtils;
  * Boot listener for triggering reminders at boot time.
  */
 public class BootReminder extends BroadcastReceiver {
+    private static final String PROFILE_OWNER_PACKAGE = "org.calyxos.bellis";
+    private static final String PROFILE_OWNER_CLASS = PROFILE_OWNER_PACKAGE
+            + ".BasicDeviceAdminReceiver";
+
     private final ManagedProfileChecker mManagedProfileChecker;
     private final UserProvisioningStateHelperProvider mUserProvisioningStateHelperProvider;
     private final EncryptionControllerProvider mEncryptionControllerProvider;
@@ -64,6 +78,38 @@ public class BootReminder extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        DevicePolicyManager dpm = context.getSystemService(DevicePolicyManager.class);
+        UserManager um = context.getSystemService(UserManager.class);
+        UserHandle userHandle = Process.myUserHandle();
+        if (um.isManagedProfile(userHandle.getIdentifier())
+                && dpm.getProfileOwnerAsUser(userHandle) == null) {
+            try {
+                Settings.Secure.putIntForUser(context.getContentResolver(),
+                        Settings.Secure.USER_SETUP_COMPLETE, 0,
+                        userHandle.getIdentifier());
+                dpm.forceUpdateUserSetupComplete(userHandle.getIdentifier());
+                AppGlobals.getPackageManager().getPackageInstaller()
+                        .installExistingPackage(PROFILE_OWNER_PACKAGE,
+                                PackageManager.INSTALL_ALL_WHITELIST_RESTRICTED_PERMISSIONS,
+                                PackageManager.INSTALL_REASON_UNKNOWN, null,
+                                userHandle.getIdentifier(), null);
+                dpm.setActiveAdmin(new ComponentName(PROFILE_OWNER_PACKAGE,
+                                PROFILE_OWNER_CLASS), true,
+                        userHandle.getIdentifier());
+                dpm.setProfileOwner(new ComponentName(PROFILE_OWNER_PACKAGE,
+                                PROFILE_OWNER_CLASS), "CalyxOS",
+                        userHandle.getIdentifier());
+                dpm.setUserProvisioningState(DevicePolicyManager.STATE_USER_SETUP_FINALIZED,
+                        userHandle.getIdentifier());
+                Settings.Secure.putIntForUser(context.getContentResolver(),
+                        Settings.Secure.USER_SETUP_COMPLETE, 1,
+                        userHandle.getIdentifier());
+                dpm.forceUpdateUserSetupComplete(userHandle.getIdentifier());
+            } catch (RemoteException e) {
+                Slog.e(BootReminder.class.getSimpleName(),
+                        "Failed to install profile owner in unmanaged profiles", e);
+            }
+        }
         mCrossProfileAppsPregrantControllerProvider
                 .createCrossProfileAppsPregrantController(context)
                         .checkCrossProfileAppsPermissions();
