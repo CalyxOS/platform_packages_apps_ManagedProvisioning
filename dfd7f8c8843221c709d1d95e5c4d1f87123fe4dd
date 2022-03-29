@@ -87,6 +87,24 @@
       "parentUuid": "98e0ba3a_3ee432bb",
       "revId": "dfd7f8c8843221c709d1d95e5c4d1f87123fe4dd",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d914285_c56498ae",
+        "filename": "src/com/android/managedprovisioning/BootReminder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-29T17:34:49Z",
+      "side": 1,
+      "message": "Ok that\u0027s great, we can safely get something out to testers / beta then when ready and go from there.",
+      "parentUuid": "045e65f5_13132c00",
+      "revId": "dfd7f8c8843221c709d1d95e5c4d1f87123fe4dd",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
