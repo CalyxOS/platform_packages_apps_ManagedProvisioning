@@ -18,6 +18,24 @@
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c4e448e_b806bbdb",
+        "filename": "src/com/android/managedprovisioning/BootReminder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-03-29T10:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cb9f238_93821481",
+      "revId": "dfd7f8c8843221c709d1d95e5c4d1f87123fe4dd",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19144d21_488fdb6b",
