@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cb9f238_93821481",
+        "filename": "src/com/android/managedprovisioning/BootReminder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-29T09:44:38Z",
+      "side": 1,
+      "message": "Let\u0027s move all of these to variables.\n\n_PACKAGE, _CLASS, etc.",
+      "revId": "dfd7f8c8843221c709d1d95e5c4d1f87123fe4dd",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19144d21_488fdb6b",
+        "filename": "src/com/android/managedprovisioning/BootReminder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-03-29T09:44:38Z",
+      "side": 1,
+      "message": "I\u0027m assuming we\u0027ll never hit this, but what if we do?\n\nWhat happens if you have an unmanaged-profile on the device already, and install/update to a build without our patches for that - if this migration fails, I assume it\u0027d just crash really bad.",
+      "revId": "dfd7f8c8843221c709d1d95e5c4d1f87123fe4dd",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
