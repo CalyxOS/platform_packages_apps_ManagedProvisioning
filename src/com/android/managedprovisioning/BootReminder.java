@@ -15,9 +15,18 @@
  */
 package com.android.managedprovisioning;
 
+import android.app.AppGlobals;
+import android.app.admin.DevicePolicyManager;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.RemoteException;
+import android.os.UserHandle;
+import android.os.UserManager;
+import android.provider.Settings;
+import android.util.Slog;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.managedprovisioning.common.CrossProfileAppsPregrantControllerProvider;
@@ -64,6 +73,38 @@ public class BootReminder extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        DevicePolicyManager dpm = context.getSystemService(DevicePolicyManager.class);
+        UserManager um = context.getSystemService(UserManager.class);
+        for (UserHandle userHandle : um.getAllProfiles()) {
+            if (dpm.getProfileOwnerAsUser(userHandle) == null) {
+                try {
+                    Settings.Secure.putIntForUser(context.getContentResolver(),
+                            Settings.Secure.USER_SETUP_COMPLETE, 0,
+                            userHandle.getIdentifier());
+                    dpm.forceUpdateUserSetupComplete(userHandle.getIdentifier());
+                    AppGlobals.getPackageManager().getPackageInstaller()
+                            .installExistingPackage("com.afwsamples.testdpc",
+                                    PackageManager.INSTALL_ALL_WHITELIST_RESTRICTED_PERMISSIONS,
+                                    PackageManager.INSTALL_REASON_UNKNOWN, null,
+                                    userHandle.getIdentifier(), null);
+                    dpm.setActiveAdmin(new ComponentName("com.afwsamples.testdpc",
+                                    "com.afwsamples.testdpc.DeviceAdminReceiver"), true,
+                            userHandle.getIdentifier());
+                    dpm.setProfileOwner(new ComponentName("com.afwsamples.testdpc",
+                                    "com.afwsamples.testdpc.DeviceAdminReceiver"), "CalyxOS",
+                            userHandle.getIdentifier());
+                    dpm.setUserProvisioningState(DevicePolicyManager.STATE_USER_SETUP_FINALIZED,
+                            userHandle.getIdentifier());
+                    Settings.Secure.putIntForUser(context.getContentResolver(),
+                            Settings.Secure.USER_SETUP_COMPLETE, 1,
+                            userHandle.getIdentifier());
+                    dpm.forceUpdateUserSetupComplete(userHandle.getIdentifier());
+                } catch (RemoteException e) {
+                    Slog.e(BootReminder.class.getSimpleName(),
+                            "Could not set profile owner for unmanaged profiles", e);
+                }
+            }
+        }
         mCrossProfileAppsPregrantControllerProvider
                 .createCrossProfileAppsPregrantController(context)
                         .checkCrossProfileAppsPermissions();
