@@ -51,6 +51,24 @@
       "message": "I\u0027m assuming we\u0027ll never hit this, but what if we do?\n\nWhat happens if you have an unmanaged-profile on the device already, and install/update to a build without our patches for that - if this migration fails, I assume it\u0027d just crash really bad.",
       "revId": "dfd7f8c8843221c709d1d95e5c4d1f87123fe4dd",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98e0ba3a_3ee432bb",
+        "filename": "src/com/android/managedprovisioning/BootReminder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-03-29T10:42:25Z",
+      "side": 1,
+      "message": "The remote exception comes from the installExistingPackage function. If that fails it cannot be set as profile owner.",
+      "parentUuid": "19144d21_488fdb6b",
+      "revId": "dfd7f8c8843221c709d1d95e5c4d1f87123fe4dd",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
