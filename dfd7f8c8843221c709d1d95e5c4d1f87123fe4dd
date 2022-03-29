@@ -69,6 +69,24 @@
       "parentUuid": "19144d21_488fdb6b",
       "revId": "dfd7f8c8843221c709d1d95e5c4d1f87123fe4dd",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "045e65f5_13132c00",
+        "filename": "src/com/android/managedprovisioning/BootReminder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-03-29T12:41:34Z",
+      "side": 1,
+      "message": "I\u0027ve tested updating to a build with unmanaged-profile reverted. It works. Most of the code revolves around the creation of the profile. And v1 had none of the changes and once Settings app was present it worked as expected too. We\u0027ve added a number of improvements since then.",
+      "parentUuid": "98e0ba3a_3ee432bb",
+      "revId": "dfd7f8c8843221c709d1d95e5c4d1f87123fe4dd",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
