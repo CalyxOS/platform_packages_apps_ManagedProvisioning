@@ -215,9 +215,7 @@ public final class FinalizationController {
                     .finalizeProvisioningInPrimaryProfile(mActivity, null);
         }
 
-        if (!params.isUnmanagedProvisioning) {
-            mUserProvisioningStateHelper.markUserProvisioningStateFinalized(params);
-        }
+        mUserProvisioningStateHelper.markUserProvisioningStateFinalized(params);
 
         mDeferredMetricsReader.scheduleDumpMetrics(mActivity);
         clearParamsFile();

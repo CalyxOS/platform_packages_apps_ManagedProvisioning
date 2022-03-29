@@ -40,7 +40,7 @@ class PrimaryProfileFinalizationHelper {
     PrimaryProfileFinalizationHelper(Account migratedAccount, UserHandle managedUserHandle,
             String mdmPackageName) {
         mMigratedAccount = migratedAccount;
-        mMdmPackageName = mdmPackageName;
+        mMdmPackageName = checkNotNull(mdmPackageName);
         mManagedUserHandle = checkNotNull(managedUserHandle);
     }
 
