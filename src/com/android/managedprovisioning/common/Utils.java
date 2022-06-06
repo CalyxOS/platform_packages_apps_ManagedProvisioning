@@ -352,15 +352,15 @@ public class Utils {
     }
 
     /**
-     * Returns the first existing managed profile if any present, null otherwise.
-     *
-     * <p>Note that we currently only support one managed profile per device.
+     * Returns the last existing managed profile if any present, null otherwise.
      */
     // TODO: Add unit tests
     public UserHandle getManagedProfile(Context context) {
         UserManager userManager = (UserManager) context.getSystemService(Context.USER_SERVICE);
         int currentUserId = userManager.getUserHandle();
         List<UserInfo> userProfiles = userManager.getProfiles(currentUserId);
+        userProfiles.sort((UserInfo userInfo, UserInfo userInfo1) ->
+                Long.compare(userInfo1.creationTime, userInfo.creationTime));
         for (UserInfo profile : userProfiles) {
             if (profile.isManagedProfile()) {
                 return new UserHandle(profile.id);
