@@ -987,6 +987,10 @@ public class PreProvisioningActivityController {
                     R.string.contact_your_admin_for_help);
             return;
         }
+        int message = getParams().inferDeviceAdminPackageName()
+                .equals(mContext.getString(R.string.calyx_work_profile_owner))
+                ? R.string.calyx_work_profile_cant_be_added_contact_admin
+                : R.string.work_profile_cant_be_added_contact_admin;
         switch (provisioningPreCondition) {
             case CODE_MANAGED_USERS_NOT_SUPPORTED:
                 mUi.showErrorAndClose(R.string.cant_add_work_profile,
@@ -1002,12 +1006,12 @@ public class PreProvisioningActivityController {
                                     + "have managed profiles");
                 } else if (!canAddManagedProfile()) {
                     mUi.showErrorAndClose(R.string.cant_add_work_profile,
-                            R.string.work_profile_cant_be_added_contact_admin,
+                            message,
                             "Exiting managed profile provisioning, a managed profile "
                                     + "already exists");
                 } else {
                     mUi.showErrorAndClose(R.string.cant_add_work_profile,
-                            R.string.work_profile_cant_be_added_contact_admin,
+                            message,
                             "Exiting managed profile provisioning, cannot add more managed "
                                     + "profiles");
                 }
