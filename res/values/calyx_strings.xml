@@ -17,4 +17,7 @@
  */
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="calyx_work_profile_owner" translatable="false">com.example.android.basicmanagedprofile</string>
+    <string name="calyx_work_profile_provisioning_step_3_header">Data in work profiles is not visible to other profiles</string>
+    <string name="calyx_work_profile_cant_be_added_contact_admin">Can\'t add more work profiles</string>
 </resources>
