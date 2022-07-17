@@ -16,6 +16,23 @@
       "message": "Shows it always now.",
       "revId": "dda2100aeb59ca109cd072d8db3e188ca27efffe",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa719feb_3363aee7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-07-17T19:34:46Z",
+      "side": 1,
+      "message": "11305: Show custom messages for BasicManagedProfile | https://review.calyxos.org/c/CalyxOS/platform_packages_apps_ManagedProvisioning/+/11305",
+      "revId": "dda2100aeb59ca109cd072d8db3e188ca27efffe",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ],
   "submitRequirementResults": []
