@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f3bb84b_7d754294",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-07-20T20:33:28Z",
+      "side": 1,
+      "message": "This patch is just what I needed in order to fix the exception `java.lang.IllegalStateException: Cannot move to user provisioning state [3] from [3]` that started after the introduction of the Bellis app for work profiles, which causes new creations to fail. (Also needed `import java.util.Collections;`.)\n\nI know this isn\u0027t an officially-supported feature at the moment, but I don\u0027t see any harm in bringing back this small change at some point (low priority of course).",
+      "revId": "294cc4045981f9b5c851e7d39f5446718fa62835",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
