@@ -16,6 +16,23 @@
       "message": "May not need to port this to 13",
       "revId": "56add20e3c02e6b61aabe4f8dd4685d22393fe34",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "314375d9_660eb0bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-08-31T17:30:25Z",
+      "side": 1,
+      "message": "This is for those who had a work profile created before May 2022\n\nGiven that we\u0027re forcing an upgrade path, everyone on 13 will either be upgrading from a build with this patch, or a new user / install, thus not needing this code anymore.",
+      "revId": "56add20e3c02e6b61aabe4f8dd4685d22393fe34",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
