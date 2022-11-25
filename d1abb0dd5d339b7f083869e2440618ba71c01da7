@@ -16,6 +16,24 @@
       "message": "Do we still want this patch? If so, why return the last? Mention in commit message.",
       "revId": "d1abb0dd5d339b7f083869e2440618ba71c01da7",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ce759ff_9877ba1e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2022-11-25T20:54:17Z",
+      "side": 1,
+      "message": "Still wanted. Reworked it yesterday for personal use after some upstream changes. Now it also ensures that everything behaves exactly the same if there is only one managed profile. Tested on device.\n\nWhat happens specifically pre-patch is that once the animated work profile flow completes, and you tap Next, there is a crash (error in commit), and you do not get to the setup wizard, and you have a half-provisioned profile to remove from Passwords and accounts.",
+      "parentUuid": "ccbee2dc_c1237917",
+      "revId": "d1abb0dd5d339b7f083869e2440618ba71c01da7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
