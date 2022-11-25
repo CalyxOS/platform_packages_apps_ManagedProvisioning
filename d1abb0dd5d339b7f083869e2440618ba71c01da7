@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccbee2dc_c1237917",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-11-25T15:19:17Z",
+      "side": 1,
+      "message": "Do we still want this patch? If so, why return the last? Mention in commit message.",
+      "revId": "d1abb0dd5d339b7f083869e2440618ba71c01da7",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
