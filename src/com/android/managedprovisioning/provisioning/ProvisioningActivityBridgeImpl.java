@@ -176,8 +176,7 @@ abstract class ProvisioningActivityBridgeImpl implements ProvisioningActivityBri
                         header, description, item1, item2, drawable, drawableContainer,
                         space1, space2);
 
-        ProvisioningModeWrapperProvider provider = new ProvisioningModeWrapperProvider(
-                layout.getContext(), getParams());
+        ProvisioningModeWrapperProvider provider = new ProvisioningModeWrapperProvider(getParams());
         ProvisioningModeWrapper provisioningModeWrapper = provider
                 .getProvisioningModeWrapper(getProvisioningMode());
         mTransitionAnimationHelper = new TransitionAnimationHelper(
