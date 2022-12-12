@@ -22,8 +22,6 @@ import static com.android.managedprovisioning.provisioning.ProvisioningActivity.
 
 import static java.util.Objects.requireNonNull;
 
-import android.content.Context;
-
 import androidx.annotation.StringRes;
 import androidx.annotation.VisibleForTesting;
 
@@ -41,24 +39,8 @@ public class ProvisioningModeWrapperProvider {
         mParams = requireNonNull(params);
     }
 
-    public ProvisioningModeWrapperProvider(Context context, ProvisioningParams params) {
-        mParams = requireNonNull(params);
-        if (mParams.inferDeviceAdminPackageName().equals(
-                context.getString(R.string.calyx_work_profile_owner))) {
-            WORK_PROFILE_WRAPPER = new ProvisioningModeWrapper(new TransitionScreenWrapper[] {
-                    new TransitionScreenWrapper(R.string.work_profile_provisioning_step_1_header,
-                            R.raw.separate_work_and_personal_animation),
-                    new TransitionScreenWrapper(R.string.work_profile_provisioning_step_2_header,
-                            R.raw.pause_work_apps_animation),
-                    new TransitionScreenWrapper(
-                            R.string.calyx_work_profile_provisioning_step_3_header,
-                            R.raw.not_private_animation)
-            }, R.string.work_profile_provisioning_summary);
-        }
-    }
-
     @VisibleForTesting
-    static ProvisioningModeWrapper WORK_PROFILE_WRAPPER =
+    static final ProvisioningModeWrapper WORK_PROFILE_WRAPPER =
             new ProvisioningModeWrapper(new TransitionScreenWrapper[] {
                     new TransitionScreenWrapper(R.string.work_profile_provisioning_step_1_header,
                             R.raw.separate_work_and_personal_animation),
