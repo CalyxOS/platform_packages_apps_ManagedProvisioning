@@ -86,9 +86,7 @@ class ConsentUiHelperImpl implements ConsentUiHelper {
         mActivity.setTitle(titleResId);
 
         // set up terms headers
-        if (!uiParams.packageName.equals(mActivity.getString(R.string.calyx_work_profile_owner))) {
-            setupViewTermsButton();
-        }
+        setupViewTermsButton();
     }
 
     @Override
