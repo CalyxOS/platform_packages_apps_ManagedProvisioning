@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2e429190_1dec9680",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-12-15T11:50:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "593c2bf9_33fc4344",
+      "revId": "b88eaa7242ff4b606b886c290c357d374534e09d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9ebc21e7_cb4ae55b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2022-12-15T11:47:47Z",
       "side": 1,
       "message": "Nice.\n\nWhat does it look like now then?\n\nAssume no work profiles. Launch Bellis, add new profile - what does it show?",
+      "revId": "b88eaa7242ff4b606b886c290c357d374534e09d",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1741c138_8e0e667d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2022-12-15T11:50:22Z",
+      "side": 1,
+      "message": "It shows the UI screens where the user has to interact (accept button etc), the animations that normally come after are not shown. Provisioning is significantly faster",
+      "parentUuid": "9ebc21e7_cb4ae55b",
       "revId": "b88eaa7242ff4b606b886c290c357d374534e09d",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
