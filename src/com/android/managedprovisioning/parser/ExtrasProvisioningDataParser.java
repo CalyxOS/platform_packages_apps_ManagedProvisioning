@@ -656,9 +656,16 @@ public class ExtrasProvisioningDataParser implements ProvisioningDataParser {
      * persistent device owner.
      */
     private boolean shouldSkipEducationScreens(Intent intent) {
+        // Prefer skipping for Bellis, unless the extras or provisioning trigger insist.
+        final String BELLIS_PACKAGE_NAME = "org.calyxos.bellis";
+        ComponentName deviceAdminComponentName = getParcelableExtraFromLongName(
+                intent, EXTRA_PROVISIONING_DEVICE_ADMIN_COMPONENT_NAME);
+        final boolean preferSkip =
+                BELLIS_PACKAGE_NAME.equals(deviceAdminComponentName.getPackageName());
+
         if (!getBooleanExtraFromLongName(intent,
                 EXTRA_PROVISIONING_SKIP_EDUCATION_SCREENS,
-                DEFAULT_EXTRA_PROVISIONING_SKIP_EDUCATION_SCREENS)) {
+                preferSkip || DEFAULT_EXTRA_PROVISIONING_SKIP_EDUCATION_SCREENS)) {
             return false;
         }
         // TODO(b/175021111): Remove managed account provisioning-specific logic in MP for the
@@ -670,11 +677,7 @@ public class ExtrasProvisioningDataParser implements ProvisioningDataParser {
             return false;
         }
 
-        final String BELLIS_PACKAGE_NAME = "org.calyxos.bellis";
-        ComponentName deviceAdminComponentName = getParcelableExtraFromLongName(
-                intent, EXTRA_PROVISIONING_DEVICE_ADMIN_COMPONENT_NAME);
-        return isFullyManagedDeviceAction(intent) || BELLIS_PACKAGE_NAME.equals(
-                deviceAdminComponentName.getPackageName());
+        return preferSkip || isFullyManagedDeviceAction(intent);
     }
 
     private boolean isFullyManagedDeviceAction(Intent intent) {
