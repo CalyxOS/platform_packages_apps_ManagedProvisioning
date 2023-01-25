@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "050c444f_47269bbc",
+        "filename": "src/com/android/managedprovisioning/parser/ExtrasProvisioningDataParser.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-25T21:11:58Z",
+      "side": 1,
+      "message": "I guess we aren\u0027t respecting this anymore, whatever the heck it is. Do we care? Maybe we should. How convoluted...",
+      "revId": "a6a21aacc3a403ae113d4f3efe134e4c4126590c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
