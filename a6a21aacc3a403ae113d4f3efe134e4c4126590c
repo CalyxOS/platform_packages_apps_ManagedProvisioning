@@ -16,6 +16,24 @@
       "message": "I guess we aren\u0027t respecting this anymore, whatever the heck it is. Do we care? Maybe we should. How convoluted...",
       "revId": "a6a21aacc3a403ae113d4f3efe134e4c4126590c",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "739122e9_7c805064",
+        "filename": "src/com/android/managedprovisioning/parser/ExtrasProvisioningDataParser.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-25T21:27:15Z",
+      "side": 1,
+      "message": "Respecting it in this patchset, if we care. Still works. Still have no idea what the point of this portion is. The first patchset works too if we don\u0027t care",
+      "parentUuid": "050c444f_47269bbc",
+      "revId": "a6a21aacc3a403ae113d4f3efe134e4c4126590c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
