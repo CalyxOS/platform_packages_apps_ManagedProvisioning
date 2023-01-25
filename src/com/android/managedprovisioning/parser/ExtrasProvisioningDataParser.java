@@ -656,6 +656,13 @@ public class ExtrasProvisioningDataParser implements ProvisioningDataParser {
      * persistent device owner.
      */
     private boolean shouldSkipEducationScreens(Intent intent) {
+        final String BELLIS_PACKAGE_NAME = "org.calyxos.bellis";
+        ComponentName deviceAdminComponentName = getParcelableExtraFromLongName(
+                intent, EXTRA_PROVISIONING_DEVICE_ADMIN_COMPONENT_NAME);
+        if (BELLIS_PACKAGE_NAME.equals(deviceAdminComponentName.getPackageName())) {
+            return true;
+        }
+
         if (!getBooleanExtraFromLongName(intent,
                 EXTRA_PROVISIONING_SKIP_EDUCATION_SCREENS,
                 DEFAULT_EXTRA_PROVISIONING_SKIP_EDUCATION_SCREENS)) {
@@ -670,11 +677,7 @@ public class ExtrasProvisioningDataParser implements ProvisioningDataParser {
             return false;
         }
 
-        final String BELLIS_PACKAGE_NAME = "org.calyxos.bellis";
-        ComponentName deviceAdminComponentName = getParcelableExtraFromLongName(
-                intent, EXTRA_PROVISIONING_DEVICE_ADMIN_COMPONENT_NAME);
-        return isFullyManagedDeviceAction(intent) || BELLIS_PACKAGE_NAME.equals(
-                deviceAdminComponentName.getPackageName());
+        return isFullyManagedDeviceAction(intent);
     }
 
     private boolean isFullyManagedDeviceAction(Intent intent) {
