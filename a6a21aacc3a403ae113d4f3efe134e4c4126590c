@@ -34,6 +34,24 @@
       "parentUuid": "050c444f_47269bbc",
       "revId": "a6a21aacc3a403ae113d4f3efe134e4c4126590c",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec33cd7c_4b3f3b84",
+        "filename": "src/com/android/managedprovisioning/parser/ExtrasProvisioningDataParser.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-25T21:30:13Z",
+      "side": 1,
+      "message": "It turns out when I actually read a line of code, sometimes it makes sense. 😮 I guess they are enforcing the user education screens for QR code / cloud enrollment / NFC-something.",
+      "parentUuid": "739122e9_7c805064",
+      "revId": "a6a21aacc3a403ae113d4f3efe134e4c4126590c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
