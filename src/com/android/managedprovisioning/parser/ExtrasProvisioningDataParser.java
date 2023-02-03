@@ -669,12 +669,7 @@ public class ExtrasProvisioningDataParser implements ProvisioningDataParser {
                 || ACTION_NDEF_DISCOVERED.equals(intent.getAction())) {
             return false;
         }
-
-        final String BELLIS_PACKAGE_NAME = "org.calyxos.bellis";
-        ComponentName deviceAdminComponentName = getParcelableExtraFromLongName(
-                intent, EXTRA_PROVISIONING_DEVICE_ADMIN_COMPONENT_NAME);
-        return isFullyManagedDeviceAction(intent) || BELLIS_PACKAGE_NAME.equals(
-                deviceAdminComponentName.getPackageName());
+        return isFullyManagedDeviceAction(intent);
     }
 
     private boolean isFullyManagedDeviceAction(Intent intent) {
