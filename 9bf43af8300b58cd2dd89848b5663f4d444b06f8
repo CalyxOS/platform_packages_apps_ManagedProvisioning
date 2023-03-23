@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1716a632_14565227",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-03-23T15:30:01Z",
+      "side": 1,
+      "message": "This was not causing the race condition. Personally I think it would be nice to not wait for the animations to finish. Profile is usable shortly after user presses start.",
+      "revId": "9bf43af8300b58cd2dd89848b5663f4d444b06f8",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
