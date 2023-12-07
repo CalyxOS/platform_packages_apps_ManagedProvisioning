@@ -26,6 +26,8 @@ import static android.content.pm.PackageManager.MATCH_UNINSTALLED_PACKAGES;
 
 import static java.util.Objects.requireNonNull;
 
+import static java.util.Objects.requireNonNull;
+
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.StringRes;
@@ -356,9 +358,12 @@ public class Utils {
      * Returns the last existing managed profile if any present, null otherwise.
      */
     // TODO: Add unit tests
+    @Nullable
     public UserHandle getManagedProfile(Context context) {
         DevicePolicyManager devicePolicyManager =
-                context.getSystemService(DevicePolicyManager.class);
+                requireNonNull(
+                        /* obj= */ context.getSystemService(DevicePolicyManager.class),
+                        /* message= */ "Unable to obtain DevicePolicyManager");
         int currentUserId = UserHandle.myUserId();
         List<UserHandle> managedProfiles =
                 devicePolicyManager.getPolicyManagedProfiles(UserHandle.of(currentUserId));
