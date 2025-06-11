@@ -84,7 +84,7 @@
     <string name="error_wifi" msgid="1850288843966836571">"WiFi-ga ei saanud ühendust luua"</string>
     <string name="device_has_reset_protection_contact_admin" msgid="5922267426079555686">"Seadmes <xliff:g id="DEVICE_NAME">%1$s</xliff:g> on lähtestamiskaitse sisse lülitatud. Abi saamiseks võtke ühendust IT-administraatoriga."</string>
     <string name="frp_clear_progress_title" msgid="8628074089458234965">"Kustutamine"</string>
-    <string name="frp_clear_progress_text" msgid="1740164332830598827">"Oodake ..."</string>
+    <string name="frp_clear_progress_text" msgid="1740164332830598827">"Palun oodake ..."</string>
     <string name="error_hash_mismatch" msgid="1145488923243178454">"Kontrollsumma vea tõttu ei saa administraatorirakendust kasutada. Abi saamiseks võtke ühendust IT-administraatoriga."</string>
     <string name="error_download_failed" msgid="3274283629837019452">"Administraatorirakendust ei õnnestunud alla laadida"</string>
     <string name="error_package_invalid" msgid="555402554502033988">"Administraatori rakendust ei saa kasutada. See ei sisalda kõiki komponente või on rikutud. Abi saamiseks võtke ühendust IT-administraatoriga."</string>
@@ -137,6 +137,8 @@
     <string name="section_content" msgid="8875502515704374394">"Jaotise <xliff:g id="SECTION_HEADING">%1$s</xliff:g> sisu: <xliff:g id="SECTION_CONTENT">%2$s</xliff:g>"</string>
     <string name="expand" msgid="37188292156131304">"Laiendamine"</string>
     <string name="collapse" msgid="7817530505064432580">"Ahendamine"</string>
+    <string name="expanded" msgid="1187836298141313658">"Laiendatud"</string>
+    <string name="collapsed" msgid="1840982182095253116">"Ahendatud"</string>
     <string name="access_list_of_links" msgid="7094123315959323372">"Juurdepääs linkide loendile"</string>
     <string name="access_links" msgid="7991363727326168600">"Juurdepääs linkidele"</string>
     <string name="access_terms" msgid="1982500872249763745">"Juurdep. terminitele"</string>

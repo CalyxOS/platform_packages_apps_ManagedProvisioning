@@ -137,6 +137,8 @@
     <string name="section_content" msgid="8875502515704374394">"<xliff:g id="SECTION_HEADING">%1$s</xliff:g> bölümünün içeriği: <xliff:g id="SECTION_CONTENT">%2$s</xliff:g>"</string>
     <string name="expand" msgid="37188292156131304">"Genişlet"</string>
     <string name="collapse" msgid="7817530505064432580">"Daraltır"</string>
+    <string name="expanded" msgid="1187836298141313658">"Genişletildi"</string>
+    <string name="collapsed" msgid="1840982182095253116">"Daraltıldı"</string>
     <string name="access_list_of_links" msgid="7094123315959323372">"Bir bağlantı listesine eriş"</string>
     <string name="access_links" msgid="7991363727326168600">"Bağlantılara eriş"</string>
     <string name="access_terms" msgid="1982500872249763745">"Şartlara eriş"</string>
@@ -167,7 +169,7 @@
     <string name="work_profile_provisioning_progress_label" msgid="2627905308998389193">"İş profiliniz oluşturuluyor…"</string>
     <string name="work_profile_provisioning_summary" msgid="3436190271657388747">"İş uygulamaları iş profilinizde tutulur. İş gününüzü bitirdiğinizde iş uygulamalarınızı duraklatabilirsiniz. BT yöneticiniz iş profilinizdeki verileri görebilir"</string>
     <string name="fully_managed_device_provisioning_accept_header" msgid="2944032660440403130">"İş cihazınızın kurulumunu yapalım"</string>
-    <string name="fully_managed_device_provisioning_step_1_header" msgid="6396274703116708592">"İş uygulamalarınızı parmaklarınızın ucunda tutun"</string>
+    <string name="fully_managed_device_provisioning_step_1_header" msgid="6396274703116708592">"İş uygulamalarınıza kolay erişin"</string>
     <string name="fully_managed_device_provisioning_step_2_header" msgid="142633978260399682">"Bu <xliff:g id="DEVICE_NAME">%1$s</xliff:g> gizli değil"</string>
     <string name="fully_managed_device_provisioning_step_2_subheader" msgid="3981784440341141618">"BT yöneticiniz bu <xliff:g id="DEVICE_NAME">%1$s</xliff:g> cihazındaki verilerinizi ve etkinliklerinizi görebilir"</string>
     <string name="fully_managed_device_provisioning_permissions_header" msgid="2852101532084770993">"Etkinliğiniz ve verileriniz"</string>

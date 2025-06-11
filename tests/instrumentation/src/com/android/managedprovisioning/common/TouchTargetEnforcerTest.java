@@ -21,10 +21,9 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
 import static org.hamcrest.number.OrderingComparison.greaterThanOrEqualTo;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Matchers.any;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.mockito.Mockito.verifyZeroInteractions;
 
 import android.graphics.Rect;
 import android.view.TouchDelegate;
@@ -120,7 +119,7 @@ public class TouchTargetEnforcerTest {
         mView.getViewTreeObserver().dispatchOnGlobalLayout(); // force UI queue to add a Runnable
 
         // then
-        verifyZeroInteractions(mViewAncestor);
+        verifyNoMoreInteractions(mViewAncestor);
     }
 
     @Test

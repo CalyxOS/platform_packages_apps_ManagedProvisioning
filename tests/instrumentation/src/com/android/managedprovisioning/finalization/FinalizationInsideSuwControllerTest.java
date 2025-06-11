@@ -26,15 +26,14 @@ import static com.android.managedprovisioning.TestUtils.createTestAdminExtras;
 import static com.google.common.truth.Truth.assertThat;
 
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyInt;
-import static org.mockito.Matchers.eq;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
 import android.accounts.Account;
@@ -159,7 +158,7 @@ public class FinalizationInsideSuwControllerTest extends AndroidTestCase {
         // THEN nothing should happen
         verify(mHelper, never()).markUserProvisioningStateInitiallyDone(params);
         verify(mHelper, never()).markUserProvisioningStateFinalized(params);
-        verifyZeroInteractions(mDeferredMetricsReader);
+        verifyNoMoreInteractions(mDeferredMetricsReader);
     }
 
     @SmallTest
@@ -175,7 +174,7 @@ public class FinalizationInsideSuwControllerTest extends AndroidTestCase {
         verify(mHelper, never())
                 .markUserProvisioningStateInitiallyDone(any(ProvisioningParams.class));
         verify(mHelper, never()).markUserProvisioningStateFinalized(any(ProvisioningParams.class));
-        verifyZeroInteractions(mDeferredMetricsReader);
+        verifyNoMoreInteractions(mDeferredMetricsReader);
     }
 
     @SmallTest

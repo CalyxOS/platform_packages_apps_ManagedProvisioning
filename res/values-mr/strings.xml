@@ -137,6 +137,8 @@
     <string name="section_content" msgid="8875502515704374394">"<xliff:g id="SECTION_HEADING">%1$s</xliff:g> विभाग आशय: <xliff:g id="SECTION_CONTENT">%2$s</xliff:g>"</string>
     <string name="expand" msgid="37188292156131304">"विस्तृत करा"</string>
     <string name="collapse" msgid="7817530505064432580">"संकुचित करा"</string>
+    <string name="expanded" msgid="1187836298141313658">"विस्तार केला आहे"</string>
+    <string name="collapsed" msgid="1840982182095253116">"कोलॅप्स केली आहे"</string>
     <string name="access_list_of_links" msgid="7094123315959323372">"दुव्यांच्या सूची अ‍ॅक्सेस करा"</string>
     <string name="access_links" msgid="7991363727326168600">"प्रवेश लिंक"</string>
     <string name="access_terms" msgid="1982500872249763745">"अटी अ‍ॅक्सेस करा"</string>
@@ -167,7 +169,7 @@
     <string name="work_profile_provisioning_progress_label" msgid="2627905308998389193">"तुमचे कार्य प्रोफाइल सेट करत आहे…"</string>
     <string name="work_profile_provisioning_summary" msgid="3436190271657388747">"कार्य अ‍ॅप्स तुमच्या कार्य प्रोफाइलमध्ये ठेवली जातात. तुमचे काम संपल्यावर तुम्ही तुमची कार्य अ‍ॅप्स थांबवू शकता. तुमच्या आयटी अ‍ॅडमिनला तुमच्या कार्य प्रोफाइलमधील डेटा दिसतो."</string>
     <string name="fully_managed_device_provisioning_accept_header" msgid="2944032660440403130">"चला तुमचे कार्य डिव्हाइस सेट करू या"</string>
-    <string name="fully_managed_device_provisioning_step_1_header" msgid="6396274703116708592">"तुमची कामाशी संबंधित अ‍ॅप्स तुमच्या हाताशी ठेवा"</string>
+    <string name="fully_managed_device_provisioning_step_1_header" msgid="6396274703116708592">"तुमची कार्य अ‍ॅप्स तुमच्या हाताशी ठेवा"</string>
     <string name="fully_managed_device_provisioning_step_2_header" msgid="142633978260399682">"हे <xliff:g id="DEVICE_NAME">%1$s</xliff:g> खाजगी नाही"</string>
     <string name="fully_managed_device_provisioning_step_2_subheader" msgid="3981784440341141618">"तुमचा आयटी अ‍ॅडमिन कदाचित या <xliff:g id="DEVICE_NAME">%1$s</xliff:g> वरील तुमचा डेटा आणि अ‍ॅक्टिव्हिटी पाहू शकतो."</string>
     <string name="fully_managed_device_provisioning_permissions_header" msgid="2852101532084770993">"तुमची अ‍ॅक्टिव्हिटी आणि डेटा"</string>

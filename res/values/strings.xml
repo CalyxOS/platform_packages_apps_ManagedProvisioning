@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" xmlns:tools="http://schemas.android.com/tools" tools:keep="@color/sud_system_*">
   <!-- General provisioning strings used for both device owner and work profile provisioning -->
 
   <!-- App label displayed in the corner of a notification. This label lets the user know which app or system setting the notifications are coming from. It's not tappable, and it's meant as additional information for the user. [CHAR LIMIT=45] -->
@@ -281,6 +281,10 @@
   <string name="expand">Expand</string>
   <!-- Accessibility description for triggering collapsing of an expanded element. [CHAR LIMIT=NONE] -->
   <string name="collapse">Collapse</string>
+    <!-- Accessibility description for current state of an expanded element. [CHAR LIMIT=NONE] -->
+  <string name="expanded">Expanded</string>
+  <!-- Accessibility description for current state of a collapsed element. [CHAR LIMIT=NONE] -->
+  <string name="collapsed">Collapsed</string>
   <!-- Accessibility description for opening a context menu with a list of links contained in the text element. [CHAR LIMIT=40] -->
   <string name="access_list_of_links">Access a list of links</string>
   <!-- Accessibility description for opening a context menu with a list of links contained in the text element. [CHAR LIMIT=40] -->
@@ -428,4 +432,17 @@
 
   <!-- Progress text shown when setting up work profile [CHAR LIMIT=NONE] -->
   <string name="setting_up">Setting up\u2026</string>
+
+  <!-- Color mappings for light theme lottie animations in glif expressive style.-->
+  <string-array name="lottie_color_mappings_expressive" translatable="false">
+    <item>.primary:@sud_system_primary_light</item>
+    <item>.primaryContainer:@sud_system_primary_container_light</item>
+    <item>.secondary:@sud_system_secondary_light</item>
+    <item>.secondaryContainer:@sud_system_secondary_container_light</item>
+    <item>.outline:@sud_system_outline_light</item>
+    <item>.outlineVariant:@sud_system_outline_variant_light</item>
+    <item>.surfaceContainer:@sud_system_surface_container_light</item>
+    <item>.surfaceDim:@sud_system_surface_dim_light</item>
+  </string-array>
+
 </resources>
